@@ -52,6 +52,10 @@ def main() -> int:
             return 1
         with zipfile.ZipFile(dest) as z:
             z.extractall(DATA_DIR, members=meta["members"])
+        for member in meta["members"]:
+            if not (DATA_DIR / member).exists():
+                print(f"ERROR: pinned member {member} missing after extraction", file=sys.stderr)
+                return 1
         print(f"{name}: checksum ok, extracted {meta['members']}")
     return 0
 
