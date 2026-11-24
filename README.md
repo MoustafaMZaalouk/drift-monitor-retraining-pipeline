@@ -1,5 +1,8 @@
 # Drift Monitor + Retraining Pipeline (simulated production replay)
 
+[![CI](https://github.com/MoustafaMZaalouk/drift-monitor-retraining-pipeline/workflows/ci/badge.svg)](https://github.com/MoustafaMZaalouk/drift-monitor-retraining-pipeline/actions)
+
+
 Replays two public datasets as a simulated production stream and measures,
 end to end, whether hand-rolled drift detectors catch known data failures and
 whether retraining on the drifted data actually helps.
@@ -229,6 +232,13 @@ feeds any number reported above.
   seasonality, because the dataset's 10 distinct months make any held-out
   month an unseen category by construction (documented in
   `driftmon/planting.py`).
+- **PageValues is a deliberate stand-in.** The batch-1
+  purchase-intent-calibration project excludes `PageValues` by default
+  because it is near-leaky (it is nonzero mainly when a session is already
+  close to converting); this replay keeps it as an observable production
+  feature - the stream needs live signals to monitor and corrupt, and its
+  truncation is one of the planted events - so shoppers metrics here are not
+  comparable to batch-1's.
 - **Retraining on drifted data can hurt**, and does in 12 of 37 bike cases;
   the policy shown here is deliberately naive (retrain on every alert) to
   make that visible. The corrupted-stream before/after read conflates
