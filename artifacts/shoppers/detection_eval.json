@@ -1,0 +1,82 @@
+{
+  "n_events": 3,
+  "events_detected": 3,
+  "recall": 1.0,
+  "n_alerts": 2,
+  "true_positive_alerts": 2,
+  "false_positive_alerts": 0,
+  "precision": 1.0,
+  "grace_periods": 2,
+  "natural_eval_alerts_clean_stream": 2,
+  "recall_basis": "any threshold firing, sent or cooldown-suppressed",
+  "precision_basis": "sent alerts only",
+  "strict": {
+    "events_detected": 2,
+    "recall": 0.6666666666666666,
+    "precision": 1.0,
+    "basis": "sent alerts only, on both sides",
+    "per_event": [
+      {
+        "event_id": "shoppers_truncate_PageValues",
+        "detected": true
+      },
+      {
+        "event_id": "shoppers_sign_flip_ExitRates",
+        "detected": true
+      },
+      {
+        "event_id": "shoppers_category_remap_VisitorType",
+        "detected": false
+      }
+    ]
+  },
+  "reference": "season_matched",
+  "per_event": [
+    {
+      "event_id": "shoppers_truncate_PageValues",
+      "kind": "truncate",
+      "feature": "PageValues",
+      "start": 6,
+      "end": 6,
+      "description": "PageValues clipped above 50 (simulated tracking change)",
+      "detected": true,
+      "latency_periods": 0,
+      "fired_signals": [
+        "input_ks",
+        "input_psi",
+        "outcome_psi",
+        "score_psi"
+      ]
+    },
+    {
+      "event_id": "shoppers_sign_flip_ExitRates",
+      "kind": "sign_flip",
+      "feature": "ExitRates",
+      "start": 8,
+      "end": 8,
+      "description": "ExitRates sign inverted (simulated pipeline bug)",
+      "detected": true,
+      "latency_periods": 0,
+      "fired_signals": [
+        "input_ks",
+        "input_psi",
+        "outcome_psi",
+        "score_psi"
+      ]
+    },
+    {
+      "event_id": "shoppers_category_remap_VisitorType",
+      "kind": "category_remap",
+      "feature": "VisitorType",
+      "start": 9,
+      "end": 9,
+      "description": "visitor-type labels swapped (simulated tracking bug; replaces the seasonality shift used for bike, because the replayed Month field is degenerate under univariate drift checks: later calendar months never appear in the reference window, so remapping them changes nothing)",
+      "detected": true,
+      "latency_periods": 0,
+      "fired_signals": [
+        "input_psi",
+        "outcome_psi"
+      ]
+    }
+  ]
+}

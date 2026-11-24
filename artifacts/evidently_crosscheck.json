@@ -1,0 +1,46 @@
+{
+  "bike": [
+    {
+      "pidx": 425,
+      "our_input_psi": 0.4119927024968455,
+      "evidently_html": "artifacts/bike/evidently_period_425.html"
+    },
+    {
+      "pidx": 455,
+      "our_input_psi": 1.7325161886745162,
+      "evidently_html": "artifacts/bike/evidently_period_455.html"
+    },
+    {
+      "pidx": 575,
+      "our_input_psi": 0.17426057780632542,
+      "evidently_html": "artifacts/bike/evidently_period_575.html"
+    },
+    {
+      "pidx": 705,
+      "our_input_psi": 1.0315456471681403,
+      "evidently_html": "artifacts/bike/evidently_period_705.html"
+    }
+  ],
+  "shoppers": [
+    {
+      "pidx": 7,
+      "our_input_psi": 1.6863721551001465,
+      "evidently_html": "artifacts/shoppers/evidently_period_7.html"
+    },
+    {
+      "pidx": 6,
+      "our_input_psi": 1.6863721551001465,
+      "evidently_html": "artifacts/shoppers/evidently_period_6.html"
+    },
+    {
+      "pidx": 8,
+      "our_input_psi": 8.315802586653033,
+      "evidently_html": "artifacts/shoppers/evidently_period_8.html"
+    },
+    {
+      "pidx": 9,
+      "our_input_psi": 2.648975561378707,
+      "evidently_html": "artifacts/shoppers/evidently_period_9.html"
+    }
+  ]
+}

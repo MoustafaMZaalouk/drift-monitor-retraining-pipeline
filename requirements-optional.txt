@@ -1,0 +1,3 @@
+# Optional third-party cross-check only (scripts/evidently_crosscheck.py).
+# Not needed for the core results.
+evidently==0.7.23

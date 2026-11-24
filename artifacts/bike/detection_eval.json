@@ -1,0 +1,81 @@
+{
+  "n_events": 3,
+  "events_detected": 3,
+  "recall": 1.0,
+  "n_alerts": 33,
+  "true_positive_alerts": 19,
+  "false_positive_alerts": 14,
+  "precision": 0.5757575757575758,
+  "grace_periods": 2,
+  "natural_eval_alerts_clean_stream": 16,
+  "recall_basis": "any threshold firing, sent or cooldown-suppressed",
+  "precision_basis": "sent alerts only",
+  "strict": {
+    "events_detected": 3,
+    "recall": 1.0,
+    "precision": 0.5757575757575758,
+    "basis": "sent alerts only, on both sides",
+    "per_event": [
+      {
+        "event_id": "bike_truncate_temp",
+        "detected": true
+      },
+      {
+        "event_id": "bike_sign_flip_windspeed",
+        "detected": true
+      },
+      {
+        "event_id": "bike_season_shift_temp",
+        "detected": true
+      }
+    ]
+  },
+  "reference": "season_matched",
+  "per_event": [
+    {
+      "event_id": "bike_truncate_temp",
+      "kind": "truncate",
+      "feature": "temp",
+      "start": 455,
+      "end": 469,
+      "description": "temperature clipped above 0.35 (simulated sensor fault)",
+      "detected": true,
+      "latency_periods": 0,
+      "fired_signals": [
+        "input_ks",
+        "input_psi",
+        "outcome_psi",
+        "score_psi"
+      ]
+    },
+    {
+      "event_id": "bike_sign_flip_windspeed",
+      "kind": "sign_flip",
+      "feature": "windspeed",
+      "start": 575,
+      "end": 589,
+      "description": "windspeed sign inverted (simulated pipeline bug)",
+      "detected": true,
+      "latency_periods": 5,
+      "fired_signals": [
+        "input_ks",
+        "input_psi"
+      ]
+    },
+    {
+      "event_id": "bike_season_shift_temp",
+      "kind": "season_shift",
+      "feature": "temp",
+      "start": 705,
+      "end": 719,
+      "description": "weather columns replay values from 91 days earlier (simulated seasonality shift of the environment; a bare relabeling of the month field was considered and rejected: univariate marginal monitors are blind to which value a calendar field concentrates on)",
+      "detected": true,
+      "latency_periods": 2,
+      "fired_signals": [
+        "input_ks",
+        "input_psi",
+        "score_psi"
+      ]
+    }
+  ]
+}

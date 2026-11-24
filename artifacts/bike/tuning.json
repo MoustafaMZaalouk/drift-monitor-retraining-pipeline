@@ -1,0 +1,21 @@
+{
+  "thresholds": {
+    "input_psi": 4.134777918058306,
+    "input_ks": 0.6724114064230343,
+    "score_psi": 0.2516448621716612,
+    "outcome_psi": 0.9055811004372533
+  },
+  "cooldown": 1,
+  "quantile": 0.95,
+  "tuned_on": "validation",
+  "n_val_periods": 60,
+  "val_alert_budget": 3,
+  "val_alerts_at_policy": 3,
+  "cooldown_grid": [
+    1,
+    2,
+    4,
+    7,
+    14
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "n_alerts_triggering_retrain": 2,
+  "retrains": [
+    {
+      "pidx": 6,
+      "period": "Sep",
+      "trained_through_pidx": 5,
+      "n_train_rows": 6608,
+      "fired_signals": [
+        "input_ks",
+        "outcome_psi"
+      ]
+    },
+    {
+      "pidx": 8,
+      "period": "Nov",
+      "trained_through_pidx": 7,
+      "n_train_rows": 7605,
+      "fired_signals": [
+        "input_psi",
+        "input_ks",
+        "score_psi",
+        "outcome_psi"
+      ]
+    }
+  ],
+  "before_after": [
+    {
+      "retrain_pidx": 6,
+      "period": "Sep",
+      "test_periods": [
+        6,
+        6
+      ],
+      "n_test_rows": 448,
+      "old": {
+        "roc_auc": 0.7638763972761146,
+        "brier": 0.1269240302709145,
+        "n": 448
+      },
+      "new": {
+        "roc_auc": 0.8381086984453295,
+        "brier": 0.1197241680793414,
+        "n": 448
+      },
+      "old_clean": {
+        "roc_auc": 0.7636836695361685,
+        "brier": 0.12905343381225137,
+        "n": 448
+      },
+      "new_clean": {
+        "roc_auc": 0.8380444558653476,
+        "brier": 0.1203153925222202,
+        "n": 448
+      },
+      "delta_brier": -0.007199862191573106,
+      "verdict": "helps"
+    },
+    {
+      "retrain_pidx": 8,
+      "period": "Nov",
+      "test_periods": [
+        8,
+        8
+      ],
+      "n_test_rows": 2998,
+      "old": {
+        "roc_auc": 0.8160137693429285,
+        "brier": 0.1498906016577143,
+        "n": 2998
+      },
+      "new": {
+        "roc_auc": 0.7967219909693806,
+        "brier": 0.14572820378222862,
+        "n": 2998
+      },
+      "old_clean": {
+        "roc_auc": 0.8031577771506515,
+        "brier": 0.16519284724659275,
+        "n": 2998
+      },
+      "new_clean": {
+        "roc_auc": 0.7976288744649829,
+        "brier": 0.15730073936999112,
+        "n": 2998
+      },
+      "delta_brier": -0.004162397875485696,
+      "verdict": "helps"
+    }
+  ],
+  "headline_metric": "brier",
+  "verdict_counts": {
+    "helps": 2,
+    "hurts": 0,
+    "no change": 0
+  },
+  "whole_window": {
+    "never_retrain": {
+      "roc_auc": 0.8152190920026583,
+      "brier": 0.12478760286654043,
+      "n": 5722
+    },
+    "retrain_on_alert": {
+      "roc_auc": 0.8239793138192324,
+      "brier": 0.11473985196727102,
+      "n": 5722
+    }
+  },
+  "whole_window_clean": {
+    "never_retrain": {
+      "roc_auc": 0.811787627360867,
+      "brier": 0.13411289073180024,
+      "n": 5722
+    },
+    "retrain_on_alert": {
+      "roc_auc": 0.82726739963716,
+      "brier": 0.11980871198466012,
+      "n": 5722
+    }
+  },
+  "test_horizon_periods": 1,
+  "note": "before/after metrics are computed on the planted (corrupted) stream window following each retrain (what production would serve), with a companion clean-stream reading of the same periods (old_clean/new_clean); the retrain-on-alert policy retrains on all matured data, including corrupted rows"
+}

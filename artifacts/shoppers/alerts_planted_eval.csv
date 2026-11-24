@@ -1,0 +1,3 @@
+pidx,period,fired,input_psi,score_psi
+6,Sep,"['input_ks', 'outcome_psi']",1.6863721551001465,0.2632751177633245
+8,Nov,"['input_psi', 'input_ks', 'score_psi', 'outcome_psi']",8.315802586653033,0.8779403553950235
